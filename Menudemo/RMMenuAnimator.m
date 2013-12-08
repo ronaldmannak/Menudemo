@@ -37,8 +37,6 @@
     if (self.dismiss) {
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             
-            // TODO: The fromViewController fades out when dismissed, why?
-            
             toViewController.view.alpha = 1.f;
             fromViewController.view.frame = offScreenRect;
             
@@ -70,6 +68,11 @@
             
         }];
     }
+}
+
+- (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)transitionContext
+{
+    
 }
 
 @end

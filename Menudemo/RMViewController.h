@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RMViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface RMViewController : UIViewController
 
 @end

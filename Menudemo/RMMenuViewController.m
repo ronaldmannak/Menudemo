@@ -19,6 +19,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.modalPresentationStyle = UIModalPresentationCustom;        // Keep presentingViewController visible on screen
+        self.modalInPopover = YES;
     }
     return self;
 }
