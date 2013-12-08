@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "RMAnimator.h"
 
-@interface RMMenuAnimator : RMAnimator
+@interface RMMenuAnimator : RMAnimator // <UIViewControllerInteractiveTransitioning>
+
+@property (nonatomic) BOOL dismiss; // Should be set to YES for dismiss animation
 
 @end

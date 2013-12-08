@@ -10,14 +10,14 @@
 
 @implementation RMTabBarAnimator
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.duration = .3f;
-    }
-    return self;
-}
+//- (id)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.duration = .3f;
+//    }
+//    return self;
+//}
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {

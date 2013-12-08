@@ -26,6 +26,10 @@
 		F807D9DA1853C8C500A60635 /* RMTabBarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9D91853C8C500A60635 /* RMTabBarAnimator.m */; };
 		F807D9E01853DF2400A60635 /* RMModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9DF1853DF2400A60635 /* RMModalViewController.m */; };
 		F807D9E91853E08F00A60635 /* RMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9E81853E08F00A60635 /* RMMenuViewController.m */; };
+		F807D9EE1854330700A60635 /* RMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9EB1854330700A60635 /* RMFirstViewController.m */; };
+		F807D9EF1854330700A60635 /* RMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9ED1854330700A60635 /* RMSecondViewController.m */; };
+		F807D9F21854391C00A60635 /* RMMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9F11854391C00A60635 /* RMMenuDelegate.m */; };
+		F807D9F51854DFC700A60635 /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9F41854DFC700A60635 /* RMViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,14 @@
 		F807D9DF1853DF2400A60635 /* RMModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMModalViewController.m; path = Menudemo/RMModalViewController.m; sourceTree = "<group>"; };
 		F807D9E71853E08F00A60635 /* RMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMenuViewController.h; path = Menudemo/RMMenuViewController.h; sourceTree = "<group>"; };
 		F807D9E81853E08F00A60635 /* RMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMenuViewController.m; path = Menudemo/RMMenuViewController.m; sourceTree = "<group>"; };
+		F807D9EA1854330700A60635 /* RMFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMFirstViewController.h; path = Menudemo/RMFirstViewController.h; sourceTree = "<group>"; };
+		F807D9EB1854330700A60635 /* RMFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMFirstViewController.m; path = Menudemo/RMFirstViewController.m; sourceTree = "<group>"; };
+		F807D9EC1854330700A60635 /* RMSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSecondViewController.h; path = Menudemo/RMSecondViewController.h; sourceTree = "<group>"; };
+		F807D9ED1854330700A60635 /* RMSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSecondViewController.m; path = Menudemo/RMSecondViewController.m; sourceTree = "<group>"; };
+		F807D9F01854391C00A60635 /* RMMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMenuDelegate.h; path = Menudemo/RMMenuDelegate.h; sourceTree = "<group>"; };
+		F807D9F11854391C00A60635 /* RMMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMenuDelegate.m; path = Menudemo/RMMenuDelegate.m; sourceTree = "<group>"; };
+		F807D9F31854DFC700A60635 /* RMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMViewController.h; path = Menudemo/RMViewController.h; sourceTree = "<group>"; };
+		F807D9F41854DFC700A60635 /* RMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMViewController.m; path = Menudemo/RMViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,12 @@
 				F807D9E81853E08F00A60635 /* RMMenuViewController.m */,
 				F807D9DE1853DF2400A60635 /* RMModalViewController.h */,
 				F807D9DF1853DF2400A60635 /* RMModalViewController.m */,
+				F807D9EA1854330700A60635 /* RMFirstViewController.h */,
+				F807D9EB1854330700A60635 /* RMFirstViewController.m */,
+				F807D9EC1854330700A60635 /* RMSecondViewController.h */,
+				F807D9ED1854330700A60635 /* RMSecondViewController.m */,
+				F807D9F31854DFC700A60635 /* RMViewController.h */,
+				F807D9F41854DFC700A60635 /* RMViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -176,6 +194,8 @@
 			children = (
 				F807D9881853A4C800A60635 /* RMTabBarDelegate.h */,
 				F807D9891853A4C800A60635 /* RMTabBarDelegate.m */,
+				F807D9F01854391C00A60635 /* RMMenuDelegate.h */,
+				F807D9F11854391C00A60635 /* RMMenuDelegate.m */,
 				F807D9D51853C7D300A60635 /* RMAnimator.h */,
 				F807D9D61853C7D300A60635 /* RMAnimator.m */,
 				F807D9D21853C2D900A60635 /* RMMenuAnimator.h */,
@@ -297,7 +317,11 @@
 				F807D98A1853A4C800A60635 /* RMTabBarDelegate.m in Sources */,
 				F807D9DA1853C8C500A60635 /* RMTabBarAnimator.m in Sources */,
 				F807D9E91853E08F00A60635 /* RMMenuViewController.m in Sources */,
+				F807D9EF1854330700A60635 /* RMSecondViewController.m in Sources */,
 				F807D954185396E100A60635 /* main.m in Sources */,
+				F807D9F51854DFC700A60635 /* RMViewController.m in Sources */,
+				F807D9F21854391C00A60635 /* RMMenuDelegate.m in Sources */,
+				F807D9EE1854330700A60635 /* RMFirstViewController.m in Sources */,
 				F807D9E01853DF2400A60635 /* RMModalViewController.m in Sources */,
 				F807D958185396E100A60635 /* RMAppDelegate.m in Sources */,
 			);

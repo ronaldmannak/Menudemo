@@ -14,11 +14,20 @@
 
 @implementation RMMenuViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.modalPresentationStyle = UIModalPresentationCustom;        // Keep presentingViewController visible on screen
+    }
+    return self;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITabBarController *tabBarController = ((UITabBarController *)self.presentingViewController);
     
-    [self dismissViewControllerAnimated:YES completion:^{
+    [tabBarController dismissViewControllerAnimated:YES completion:^{
         tabBarController.selectedIndex = indexPath.row;
     }];
 }
