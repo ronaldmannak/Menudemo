@@ -144,7 +144,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O1-Bj-C2C">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O1-Bj-C2C">
                                 <rect key="frame" x="20" y="246" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Detail">
@@ -154,7 +154,7 @@
                                     <segue destination="8aZ-j2-Vfn" kind="push" id="648-gx-hO8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dJ-bl-yFC">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dJ-bl-yFC">
                                 <rect key="frame" x="20" y="284" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Modal">
@@ -170,6 +170,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsV-Kj-sV7">
+                                <rect key="frame" x="20" y="284" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Modal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -180,11 +187,11 @@
                             <constraint firstItem="W22-sQ-Lmf" firstAttribute="top" secondItem="29h-N2-YGT" secondAttribute="bottom" constant="8" symbolic="YES" id="I7w-Tp-eR0"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="top" secondItem="ZBR-mH-yVw" secondAttribute="bottom" constant="94" id="Q8m-ce-E4g"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="trailing" secondItem="7O1-Bj-C2C" secondAttribute="trailing" id="Qic-Nf-FaB"/>
+                            <constraint firstItem="CsV-Kj-sV7" firstAttribute="top" secondItem="ZBR-mH-yVw" secondAttribute="bottom" constant="220" id="SlU-HS-Ymf"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="leading" secondItem="7O1-Bj-C2C" secondAttribute="leading" id="VcY-Im-A7Y"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="leading" secondItem="8dJ-bl-yFC" secondAttribute="leading" id="fkK-is-qci"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="leading" secondItem="W22-sQ-Lmf" secondAttribute="leading" id="mm8-49-RA1"/>
                             <constraint firstItem="29h-N2-YGT" firstAttribute="trailing" secondItem="W22-sQ-Lmf" secondAttribute="trailing" id="q6G-fI-CA0"/>
-                            <constraint firstItem="OoD-6X-acO" firstAttribute="top" secondItem="8dJ-bl-yFC" secondAttribute="bottom" constant="254" id="umh-4R-dpO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="K95-gk-bD3">

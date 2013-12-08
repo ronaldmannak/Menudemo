@@ -11,33 +11,22 @@
 
 @interface RMMenuDelegate ()
 
-@property (nonatomic, strong) RMMenuAnimator *animator;
-
 @end
 
 @implementation RMMenuDelegate
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.animator = [[RMMenuAnimator alloc] init];
-    }
-    return self;
-}
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source
 {
-    self.animator.dismiss = NO;
-    return self.animator;
+    return [[RMMenuAnimator alloc] init];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    self.animator.dismiss = YES;
-    return self.animator;
+    RMMenuAnimator *animator = [[RMMenuAnimator alloc] init];
+    animator.dismiss = YES;
+    return animator;
 }
 
 
