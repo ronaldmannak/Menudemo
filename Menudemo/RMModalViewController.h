@@ -1,5 +1,5 @@
 //
-//  RMSecondViewController.h
+//  RMModalViewController.h
 //  Menudemo
 //
 //  Created by Ronald Mannak on 12/7/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RMSecondViewController : UIViewController
+@interface RMModalViewController : UIViewController
 
 @end
