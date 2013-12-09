@@ -7,10 +7,12 @@
 //
 
 #import "RMMenuViewController.h"
+#import "UIImage+ImageEffects.h"
 
 @interface RMMenuViewController ()
 
-@property (nonatomic, strong) UITapGestureRecognizer *dismissRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer    *dismissRecognizer;
+@property (nonatomic, strong) UIToolbar                 *toolbar;
 @end
 
 @implementation RMMenuViewController
@@ -29,11 +31,19 @@
 {
     [super viewDidLoad];
 
+    // Tap outside menu view to dismiss menu
     self.presentingViewController.view.userInteractionEnabled = NO;
     self.dismissRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOutsideView:)];
     [self.dismissRecognizer setNumberOfTapsRequired:1];
     self.dismissRecognizer.cancelsTouchesInView = NO;
     [self.presentingViewController.view.window addGestureRecognizer:self.dismissRecognizer];
+    
+    // Add blurry background
+    
+    // Toolbar view doesn't animate fluidly
+//    self.toolbar = [[UIToolbar alloc] initWithFrame:[self.view bounds]];
+//    [self.view.layer insertSublayer:[self.toolbar layer] atIndex:0];
+
 }
 
 // Note: if dismissViewControllerAnimated is called, dismissRecognizer won't be removed, and user interaction will stay NO
@@ -69,6 +79,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self dismissMenuWithIndex:indexPath.row];
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
 }
 
 @end

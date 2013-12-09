@@ -30,6 +30,8 @@
 		F807D9EF1854330700A60635 /* RMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9ED1854330700A60635 /* RMSecondViewController.m */; };
 		F807D9F21854391C00A60635 /* RMMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9F11854391C00A60635 /* RMMenuDelegate.m */; };
 		F807D9F51854DFC700A60635 /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9F41854DFC700A60635 /* RMViewController.m */; };
+		F807D9FC1855335E00A60635 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9FB1855335E00A60635 /* UIImage+ImageEffects.m */; };
+		F807D9FF1855682700A60635 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = F807D9FE1855682700A60635 /* UIView+Screenshot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,10 @@
 		F807D9F11854391C00A60635 /* RMMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMenuDelegate.m; path = Menudemo/RMMenuDelegate.m; sourceTree = "<group>"; };
 		F807D9F31854DFC700A60635 /* RMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMViewController.h; path = Menudemo/RMViewController.h; sourceTree = "<group>"; };
 		F807D9F41854DFC700A60635 /* RMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMViewController.m; path = Menudemo/RMViewController.m; sourceTree = "<group>"; };
+		F807D9FA1855335E00A60635 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Menudemo/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		F807D9FB1855335E00A60635 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Menudemo/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		F807D9FD1855682700A60635 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Screenshot.h"; path = "Menudemo/UIView+Screenshot.h"; sourceTree = "<group>"; };
+		F807D9FE1855682700A60635 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "Menudemo/UIView+Screenshot.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 				F807D9871853A49700A60635 /* Views */,
 				F807D9861853A48700A60635 /* Transitions */,
 				F807D97F18539F6600A60635 /* ViewControllers */,
+				F807D9F6185532DC00A60635 /* Catagories */,
 				F807D94E185396E100A60635 /* Supporting Files */,
 				F807D96F185396E100A60635 /* MenudemoTests */,
 				F807D946185396E100A60635 /* Frameworks */,
@@ -214,6 +221,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		F807D9F6185532DC00A60635 /* Catagories */ = {
+			isa = PBXGroup;
+			children = (
+				F807D9FA1855335E00A60635 /* UIImage+ImageEffects.h */,
+				F807D9FB1855335E00A60635 /* UIImage+ImageEffects.m */,
+				F807D9FD1855682700A60635 /* UIView+Screenshot.h */,
+				F807D9FE1855682700A60635 /* UIView+Screenshot.m */,
+			);
+			name = Catagories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -313,12 +331,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F807D9D41853C2D900A60635 /* RMMenuAnimator.m in Sources */,
+				F807D9FC1855335E00A60635 /* UIImage+ImageEffects.m in Sources */,
 				F807D9D71853C7D300A60635 /* RMAnimator.m in Sources */,
 				F807D98A1853A4C800A60635 /* RMTabBarDelegate.m in Sources */,
 				F807D9DA1853C8C500A60635 /* RMTabBarAnimator.m in Sources */,
 				F807D9E91853E08F00A60635 /* RMMenuViewController.m in Sources */,
 				F807D9EF1854330700A60635 /* RMSecondViewController.m in Sources */,
 				F807D954185396E100A60635 /* main.m in Sources */,
+				F807D9FF1855682700A60635 /* UIView+Screenshot.m in Sources */,
 				F807D9F51854DFC700A60635 /* RMViewController.m in Sources */,
 				F807D9F21854391C00A60635 /* RMMenuDelegate.m in Sources */,
 				F807D9EE1854330700A60635 /* RMFirstViewController.m in Sources */,

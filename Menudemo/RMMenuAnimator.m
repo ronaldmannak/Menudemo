@@ -7,6 +7,11 @@
 //
 
 #import "RMMenuAnimator.h"
+#import "UIImage+ImageEffects.h"
+#import "UIView+Screenshot.h"
+
+static const NSInteger kBlurImageTag = 9999;
+static const NSInteger kDarkenViewTag = 9998;
 
 @interface RMMenuAnimator ()
 
@@ -28,22 +33,40 @@
     UIViewController* toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController* fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 
+    NSAssert(![fromViewController.view viewWithTag:kBlurImageTag], @"Can't have another view with tag kBlurImageTag (9999)");
+    NSAssert(![fromViewController.view viewWithTag:kDarkenViewTag], @"Can't have another view with tag kDarkenViewTag (9998)");
+
     CGRect offScreenRect, onScreenRect;
-    
     offScreenRect = onScreenRect = [transitionContext initialFrameForViewController:fromViewController];
     offScreenRect.origin.x -= CGRectGetWidth(offScreenRect);
     onScreenRect.size.width = ceil(onScreenRect.size.width *0.66f);
     
     if (self.dismiss) {
+        
+        UIView *blurImageView = [toViewController.view viewWithTag:kBlurImageTag];
+        CGRect blurFrame = onScreenRect;
+        blurFrame.size.width = 0.f;
+        
+        UIView *darkenView = [toViewController.view viewWithTag:kDarkenViewTag];
+        
+        NSAssert(blurImageView && [blurImageView isKindOfClass:[UIImageView class]], @"blurImageView not found");
+        NSAssert(darkenView && [darkenView isKindOfClass:[UIView class]], @"darkenView not found");
+        
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            
-            toViewController.view.alpha = 1.f;
+        
             fromViewController.view.frame = offScreenRect;
+            blurImageView.frame = blurFrame;
+            
+            darkenView.frame = toViewController.view.bounds;
+            darkenView.alpha = 0.f;
             
         } completion:^(BOOL finished) {
             
-            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+            [blurImageView removeFromSuperview];
+            [darkenView removeFromSuperview];
             
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+
         }];
         
     } else {
@@ -53,14 +76,36 @@
         [[transitionContext containerView] addSubview:toViewController.view];
         
         toViewController.view.frame = offScreenRect;
-        toViewController.view.alpha = .1f;
-        fromViewController.view.alpha = .75f;
+        
+        // Create blurred view of fromViewController
+        UIImage *fromScreenshot = [fromViewController.view screenshot];
+        UIImage *blurImage = [fromScreenshot applyLightEffect];
+        UIImageView *blurImageView = (UIImageView *) ((UITableViewController *)toViewController).tableView.backgroundView;
+        blurImageView.image = blurImage;
+        blurImageView = [[UIImageView alloc] initWithImage:blurImage];
+        blurImageView.clipsToBounds = YES;
+        CGRect blurImageRect = fromViewController.view.bounds;
+        blurImageRect.size.width = 0.f;
+        blurImageView.frame = blurImageRect;
+        blurImageView.tag = kBlurImageTag;
+        blurImageView.contentMode = UIViewContentModeLeft;
+        [fromViewController.view addSubview:blurImageView];
+        
+        // create darken view on to of presenting viewcontroller
+        UIView *darkenView = [[UIView alloc] initWithFrame:fromViewController.view.bounds];
+        darkenView.backgroundColor = [UIColor blackColor];
+        darkenView.alpha = .0f;
+        darkenView.tag = kDarkenViewTag;
+        [fromViewController.view addSubview:darkenView];
+        CGRect darkenFrame = darkenView.frame;
+        darkenFrame.origin.x = onScreenRect.size.width;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             
-            toViewController.view.alpha = 1.f;
-            toViewController.view.frame = onScreenRect;
-            fromViewController.view.alpha = .3f;
+            toViewController.view.frame = blurImageView.frame = onScreenRect;
+            
+            darkenView.frame = darkenFrame;
+            darkenView.alpha = .5f;
             
         } completion:^(BOOL finished) {
             

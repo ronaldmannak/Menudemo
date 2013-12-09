@@ -24,6 +24,10 @@
     UIViewController* toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController* fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 
+    // Changing the default black background to a more subtle white color
+    // TODO: zoom content of view instead of view (like Twitter for iOS)
+    fromViewController.view.window.backgroundColor = [UIColor whiteColor];
+    
     [[transitionContext containerView] addSubview:toViewController.view];
     
     CGRect offScreenRect = [transitionContext initialFrameForViewController:fromViewController];
@@ -37,7 +41,7 @@
     darkView.backgroundColor = [UIColor blackColor];
     darkView.alpha = 0.f;
     [fromViewController.view addSubview:darkView];
-    
+
     [UIView animateWithDuration:self.duration
                           delay:0.f
                         options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -49,10 +53,12 @@
                             
                         } completion:^(BOOL finished) {
                             
-                            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-                            
                             fromViewController.view.transform = CGAffineTransformIdentity;
                             [darkView removeFromSuperview];
+                            fromViewController.view.window.backgroundColor = [UIColor clearColor];
+                            
+                            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+
 
                         }];
 }
