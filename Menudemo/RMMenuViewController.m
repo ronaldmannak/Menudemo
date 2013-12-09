@@ -8,11 +8,15 @@
 
 #import "RMMenuViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "RMMenuDelegate.h"
 
-@interface RMMenuViewController ()
+static const NSInteger kNoIndexSelected = -1;
+
+@interface RMMenuViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITapGestureRecognizer    *dismissRecognizer;
-@property (nonatomic, strong) UIToolbar                 *toolbar;
+@property (nonatomic, strong) UIPanGestureRecognizer    *panRecognizer;
+
 @end
 
 @implementation RMMenuViewController
@@ -38,24 +42,24 @@
     self.dismissRecognizer.cancelsTouchesInView = NO;
     [self.presentingViewController.view.window addGestureRecognizer:self.dismissRecognizer];
     
-    // Add blurry background
-    
-    // Toolbar view doesn't animate fluidly
-//    self.toolbar = [[UIToolbar alloc] initWithFrame:[self.view bounds]];
-//    [self.view.layer insertSublayer:[self.toolbar layer] atIndex:0];
-
+    // Pan left to dismiss menu
+    self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.presentingViewController.view.window addGestureRecognizer:self.panRecognizer];
+    [self.view addGestureRecognizer:self.panRecognizer];
 }
 
 // Note: if dismissViewControllerAnimated is called, dismissRecognizer won't be removed, and user interaction will stay NO
 - (void)dismissMenuWithIndex:(NSInteger)index
 {
     [self.presentingViewController.view.window removeGestureRecognizer:self.dismissRecognizer];
+    [self.presentingViewController.view.window removeGestureRecognizer:self.panRecognizer];
+    
     self.presentingViewController.view.userInteractionEnabled = YES;
     
     UITabBarController *tabBarController = ((UITabBarController *)self.presentingViewController);
     
     [tabBarController dismissViewControllerAnimated:YES completion:^{
-        if (index >= 0) {
+        if (index != kNoIndexSelected) {
             tabBarController.selectedIndex = index;
         }
     }];
@@ -68,11 +72,44 @@
     CGPoint location = [sender locationInView:self.view];
     
     if (!CGRectContainsPoint(self.view.bounds, location)) {
-        [self dismissMenuWithIndex:-1];
+        [self dismissMenuWithIndex:kNoIndexSelected];
     }
 }
 
-#pragma mark - UIGestureRecognizerDelegate
+- (void)pan:(UIPanGestureRecognizer*)recognizer
+{
+    UIView *view = recognizer.view;
+    NSLog(@"State: %li", recognizer.state);
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+//            ((RMMenuDelegate *)self.transitioningDelegate).interactionController = [[UIPercentDrivenInteractiveTransition alloc] init];
+            [self dismissMenuWithIndex:kNoIndexSelected];
+            break;
+            
+        case UIGestureRecognizerStateChanged: {
+            
+            // TODO: using RMMenuDelegate here isn't pretty, no link to RMMenuDelegate would be better
+            CGPoint translation = [recognizer translationInView:view];
+            CGFloat distance = fabs(translation.x / CGRectGetWidth(view.bounds));
+            [((RMMenuDelegate *)self.transitioningDelegate).interactionController updateInteractiveTransition:distance];
+            NSLog(@"distance: %f", distance);
+            break;
+        }
+            
+        case UIGestureRecognizerStateEnded:
+            
+            if ([recognizer velocityInView:view].x > 0) {
+                [((RMMenuDelegate *)self.transitioningDelegate).interactionController finishInteractiveTransition];
+            } else {
+                [((RMMenuDelegate *)self.transitioningDelegate).interactionController cancelInteractiveTransition];
+            }
+            ((RMMenuDelegate *)self.transitioningDelegate).interactionController = nil;
+            break;
+            
+        default:
+            break;
+    }
+}
 
 #pragma mark - UITableViewDelegate
 

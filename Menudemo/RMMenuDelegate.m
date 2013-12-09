@@ -15,6 +15,8 @@
 
 @implementation RMMenuDelegate
 
+#pragma mark - UIViewControllerControllerTransitioningDelegate
+
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source
@@ -29,18 +31,25 @@
     return animator;
 }
 
-
-/*
- - (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
- interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController
- {
- return nil;// self.interactionController;
- }
- 
  - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
  {
- return  nil;
+     return self.interactionController;
  }
- */
+ 
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController
+{
+    return [[RMMenuAnimator alloc] init];
+}
+
+
+// Any other return value than nil disables dismissal of menu.
+- (UIPercentDrivenInteractiveTransition *)interactionController
+{
+    if (!_interactionController) {
+        _interactionController = [[UIPercentDrivenInteractiveTransition alloc] init];
+    }
+    return _interactionController;
+}
 
 @end

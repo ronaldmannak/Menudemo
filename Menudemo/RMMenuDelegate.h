@@ -10,4 +10,6 @@
 
 @interface RMMenuDelegate : NSObject <UIViewControllerTransitioningDelegate>
 
+@property (strong, nonatomic) UIPercentDrivenInteractiveTransition* interactionController;
+
 @end
